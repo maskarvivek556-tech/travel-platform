@@ -1,0 +1,200 @@
+.section {
+  background: linear-gradient(180deg, #f8fbf8, #edf5f0);
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.card {
+  display: block;
+  background: white;
+  border: 1px solid #e3ebe5;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(16, 45, 53, 0.05);
+  animation: cardEnter 0.7s ease both;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 22px 45px rgba(16, 45, 53, 0.14);
+}
+
+.imageBox {
+  height: 210px;
+  position: relative;
+  overflow: hidden;
+  background: #eaf1ed;
+}
+
+.imageBox img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.card:hover .imageBox img {
+  transform: scale(1.12);
+}
+
+.imageBox::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, #102d3580, transparent 65%);
+  pointer-events: none;
+}
+
+.badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  background: #ffffffed;
+  color: #087b68;
+  padding: 7px 11px;
+  border-radius: 30px;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.imageIcon {
+  position: absolute;
+  z-index: 2;
+  bottom: 13px;
+  right: 15px;
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  background: #ffffffed;
+  color: var(--teal);
+}
+
+.content {
+  padding: 21px;
+}
+
+.content h3 {
+  font: 800 19px Manrope, sans-serif;
+  margin: 0 0 7px;
+  color: #142f35;
+}
+
+.content > p {
+  font-size: 13px;
+  color: #788b89;
+  line-height: 1.7;
+  min-height: 42px;
+  margin: 0 0 17px;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  padding: 15px 0;
+  border-top: 1px solid #edf1ed;
+  border-bottom: 1px solid #edf1ed;
+}
+
+.specs span {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #526b68;
+}
+
+.specs svg {
+  color: var(--teal);
+}
+
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 17px;
+}
+
+.bottom small {
+  display: block;
+  color: #8a9995;
+  font-size: 10px;
+  margin-bottom: 5px;
+}
+
+.bottom strong {
+  display: block;
+  font: 800 22px Manrope, sans-serif;
+  color: var(--teal);
+}
+
+.arrow {
+  height: 43px;
+  width: 43px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: white;
+  background: var(--teal);
+  transition: transform 0.3s, background 0.3s;
+}
+
+.card:hover .arrow {
+  transform: rotate(45deg);
+  background: #102f36;
+}
+
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1050px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .imageBox {
+    height: 220px;
+  }
+
+  .content {
+    padding: 19px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    animation: none;
+    transition: none;
+  }
+
+  .card:hover,
+  .card:hover .imageBox img,
+  .card:hover .arrow {
+    transform: none;
+  }
+}

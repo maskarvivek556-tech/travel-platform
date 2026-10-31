@@ -1,0 +1,241 @@
+
+.topbar {
+  background: #102d35;
+  color: #c6d7d5;
+  font-size: 11px;
+}
+
+.topbar > div {
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: #ffffffed;
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid #e5ece7;
+}
+
+.inner {
+  min-height: 92px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 20px;
+}
+
+/* LEFT SIDE LOGO */
+
+.brand {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: start;
+  margin-left: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: Manrope, sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -1px;
+  white-space: nowrap;
+}
+
+.brand > span:last-child > span {
+  color: var(--teal);
+}
+
+.logo {
+  height: 52px;
+  width: 52px;
+  border-radius: 14px;
+  background: var(--teal);
+  color: white;
+  display: grid;
+  place-items: center;
+}
+
+.brand small {
+  display: block;
+  font: 800 10px "DM Sans", sans-serif;
+  letter-spacing: 1.6px;
+  color: #819195;
+  margin-top: 7px;
+}
+
+/* CENTER NAVIGATION */
+
+.nav {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  font-size: 17px;
+  font-weight: 700;
+  color: #40565b;
+  white-space: nowrap;
+}
+
+.nav > a {
+  transition: color 0.2s ease;
+}
+
+.nav > a:hover {
+  color: var(--teal);
+}
+
+/* RIGHT SIDE PLAN A TRIP */
+.cta {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: end;
+  margin-left: 0;
+  margin-right: 0;
+  background: var(--teal);
+  color: #fff !important;
+  padding: 16px 25px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 17px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.cta:hover {
+  transform: translateY(-2px);
+  background: #174d4d;
+}
+
+/* MOBILE MENU BUTTON */
+
+.menuButton {
+  display: none;
+  background: transparent;
+  border: 0;
+  color: var(--ink);
+}
+
+/* TABLET */
+
+@media (max-width: 1100px) {
+  .inner {
+  min-height: 92px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+  .brand {
+    font-size: 28px;
+  }
+
+  .logo {
+    height: 44px;
+    width: 44px;
+  }
+
+  .nav {
+    gap: 15px;
+    font-size: 14px;
+  }
+
+  .cta {
+    padding: 13px 15px;
+    font-size: 14px;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+  .inner {
+    min-height: 72px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .brand {
+    order: 1;
+    font-size: 23px;
+    gap: 8px;
+  }
+
+  .logo {
+    height: 39px;
+    width: 39px;
+  }
+
+  .brand small {
+    font-size: 7px;
+    letter-spacing: 1px;
+  }
+
+  .menuButton {
+    order: 2;
+    display: grid;
+    place-items: center;
+    padding: 8px;
+  }
+
+  .cta {
+    display: none;
+  }
+
+  .nav {
+    display: none;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 15px 22px 22px;
+    box-shadow: 0 20px 30px #102d3514;
+    align-items: stretch;
+    gap: 0;
+    font-size: 15px;
+  }
+
+  .navOpen {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav > a {
+    padding: 13px 3px;
+    border-bottom: 1px solid #f0f3ef;
+  }
+
+  .topbar > div {
+    font-size: 9px;
+  }
+
+  .topbar > div span:last-child {
+    display: none;
+  }
+}
+.navLinks a {
+  color: #15333a;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navLinks a:hover {
+  color: #078b7b;
+}
