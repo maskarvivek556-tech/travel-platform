@@ -1,6 +1,8 @@
+
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import {
   ArrowRight,
   CalendarDays,
@@ -12,19 +14,25 @@ import {
   MapPin,
   Search,
   Users,
+  ShieldCheck,
+  Sparkles,
+  Plane,
 } from "lucide-react";
 
 import styles from "./BookingSearch.module.css";
 
 const tabs = [
-  { label: "Cab & taxi", icon: CarFront },
-  { label: "Bus rental", icon: Bus },
-  { label: "Railway", icon: TrainFront },
-  { label: "Maharashtra ST", icon: Ticket },
-  { label: "Vehicle rental", icon: Luggage },
+  { label: "Cab & Taxi", value: "Cab & taxi", icon: CarFront },
+  { label: "Bus Rental", value: "Bus rental", icon: Bus },
+  { label: "Flights", icon: Plane },
+  { label: "Railway", value: "Railway", icon: TrainFront },
+  { label: "Maharashtra ST", value: "Maharashtra ST", icon: Ticket },
+  { label: "Vehicle Rental", value: "Vehicle rental", icon: Luggage },
 ];
 
 export default function BookingSearch() {
+  const router = useRouter();
+
   const [tab, setTab] = useState("Cab & taxi");
   const [from, setFrom] = useState("Pune");
   const [to, setTo] = useState("Mumbai");
@@ -45,6 +53,11 @@ export default function BookingSearch() {
       return;
     }
 
+    if (date && date < new Date().toLocaleDateString("en-CA")) {
+      setMessage("Please select today or a future date.");
+      return;
+    }
+
     const params = new URLSearchParams({
       type: tab,
       from: from.trim(),
@@ -53,58 +66,79 @@ export default function BookingSearch() {
       people,
     });
 
-    const url = `/search-results?${params.toString()}`;
-
-    const newWindow = window.open(
-      url,
-      "_blank",
-      "noopener,noreferrer"
-    );
-
-    if (!newWindow) {
-      setMessage("Please allow pop-ups to open search results.");
-      return;
-    }
-
-    setMessage("Your search results are opening...");
+    router.push(`/search-results?${params.toString()}`);
   }
 
   return (
     <section className={styles.section} id="booking">
       <div className="container">
+
+        <div className={styles.heading}>
+          <span className={styles.eyebrow}>
+            <Sparkles size={14} />
+            SIMPLE · FAST · CONVENIENT
+          </span>
+
+          <h2>
+            Where would you like <span>to go?</span>
+          </h2>
+
+          <p>
+            Choose your travel service, enter your journey details
+            and explore available demo options.
+          </p>
+        </div>
+
         <div className={styles.card}>
 
-          <div className={styles.tabs} role="tablist">
-            {tabs.map((t) => (
-              <button
-                type="button"
-                key={t.label}
-                role="tab"
-                aria-selected={tab === t.label}
-                className={tab === t.label ? styles.active : ""}
-                onClick={() => {
-                  setTab(t.label);
-                  setMessage("");
-                }}
-              >
-                <t.icon size={18} />
-                <span>{t.label}</span>
-              </button>
-            ))}
+          <div className={styles.cardTop}>
+            <div>
+              <h3>Find your perfect journey</h3>
+              <p>Select a service to get started</p>
+            </div>
+
+            <span className={styles.secureTag}>
+              <ShieldCheck size={15} />
+              Easy Booking
+            </span>
+          </div>
+
+          <div className={styles.tabs} role="tablist" aria-label="Travel service">
+            {tabs.map((t, index) => {
+              const Icon = t.icon;
+
+              return (
+                <button
+                  type="button"
+                  key={`${t.value}-${index}`}
+                  role="tab"
+                  aria-selected={tab === t.value}
+                  className={tab === t.value ? styles.active : ""}
+                  onClick={() => {
+                    setTab(t.value);
+                    setMessage("");
+                  }}
+                >
+                  <Icon size={19} />
+                  <span>{t.label}</span>
+                </button>
+              );
+            })}
           </div>
 
           <form className={styles.form} onSubmit={submit}>
 
             <label>
               <span>
-                <MapPin size={14} />
-                FROM
+                <MapPin size={15} />
+                PICKUP / FROM
               </span>
 
               <input
                 value={from}
                 onChange={(e) => setFrom(e.target.value)}
-                placeholder="Pickup city or station"
+                placeholder="Enter pickup city"
+                autoComplete="address-level2"
                 required
               />
             </label>
@@ -115,35 +149,38 @@ export default function BookingSearch() {
 
             <label>
               <span>
-                <MapPin size={14} />
-                TO
+                <MapPin size={15} />
+                DESTINATION / TO
               </span>
 
               <input
                 value={to}
                 onChange={(e) => setTo(e.target.value)}
-                placeholder="Destination"
+                placeholder="Where to?"
                 required
               />
             </label>
 
             <label>
               <span>
-                <CalendarDays size={14} />
-                DEPARTURE
+                <CalendarDays size={15} />
+                JOURNEY DATE
               </span>
 
               <input
                 type="date"
                 min={new Date().toLocaleDateString("en-CA")}
                 value={date}
-                onChange={(e) => setDate(e.target.value)}
+                onChange={(e) => {
+                  setDate(e.target.value);
+                  setMessage("");
+                }}
               />
             </label>
 
             <label className={styles.people}>
               <span>
-                <Users size={14} />
+                <Users size={15} />
                 TRAVELLERS
               </span>
 
@@ -165,18 +202,22 @@ export default function BookingSearch() {
               className={`button button-primary ${styles.searchButton}`}
               type="submit"
             >
-              <Search size={18} />
-              Search
+              <Search size={19} />
+              Search Trips
+              <ArrowRight size={17} />
             </button>
 
           </form>
 
           <div className={styles.foot}>
             <span role="status">
-              {message || "Compare travel options and plan with confidence."}
+              {message || "Your next journey is just a search away."}
             </span>
 
-            <span>✓ Demo experience</span>
+            <span>
+              <ShieldCheck size={14} />
+              Simple & Secure Demo
+            </span>
           </div>
 
         </div>

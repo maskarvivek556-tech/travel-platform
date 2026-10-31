@@ -1,5 +1,14 @@
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Sparkles, Users, BriefcaseBusiness } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Sparkles,
+  Users,
+  BriefcaseBusiness,
+  ShieldCheck,
+  Gauge,
+} from "lucide-react";
+
 import { vehicles } from "@/data/vehicles";
 import styles from "./Fleet.module.css";
 
@@ -7,27 +16,26 @@ export default function Fleet() {
   return (
     <section className={`section ${styles.section}`} id="fleet">
       <div className="container">
-
-        <div className="section-top">
-          <div className="section-heading">
+        <div className={styles.header}>
+          <div className={styles.heading}>
             <span className="eyebrow">
-              <Sparkles size={16} /> OUR VEHICLE FLEET
+              <Sparkles size={15} /> OUR VEHICLE COLLECTION
             </span>
 
             <h2>
-              Find your perfect ride.
+              The right ride for
               <br />
-              <span>Travel in comfort.</span>
+              <span>every journey.</span>
             </h2>
 
             <p>
-              Explore our vehicle collection. Choose the right vehicle
-              according to your group size, budget and travel needs.
+              From comfortable city rides to spacious group travel,
+              choose a vehicle that perfectly matches your journey.
             </p>
           </div>
 
-          <Link href="/contact" className="text-link">
-            Request a custom quote <ArrowRight size={18} />
+          <Link href="/contact" className={styles.customLink}>
+            Request a custom quote <ArrowRight size={17} />
           </Link>
         </div>
 
@@ -45,30 +53,55 @@ export default function Fleet() {
                 <div className={styles.imageBox}>
                   <img src={vehicle.image} alt={vehicle.name} />
 
-                  <span className={styles.badge}>Available for booking</span>
+                  <span className={styles.availability}>
+                    <span className={styles.dot} />
+                    Available for booking
+                  </span>
+
+                  <span className={styles.vehicleNumber}>
+                    0{index + 1}
+                  </span>
 
                   <span className={styles.imageIcon}>
-                    <Icon size={24} />
+                    <Icon size={23} />
                   </span>
                 </div>
 
                 <div className={styles.content}>
+                  <span className={styles.category}>
+                    {vehicle.tone === "peach" || vehicle.tone === "purple"
+                      ? "GROUP TRAVEL"
+                      : "PERSONAL TRAVEL"}
+                  </span>
+
                   <h3>{vehicle.name}</h3>
-                  <p>{vehicle.detail}</p>
+                  <p className={styles.description}>{vehicle.detail}</p>
 
                   <div className={styles.specs}>
-                    <span><Users size={16} /> {vehicle.passengers}</span>
-                    <span><BriefcaseBusiness size={16} /> {vehicle.luggage}</span>
+                    <div>
+                      <Users size={17} />
+                      <span>{vehicle.passengers}</span>
+                    </div>
+
+                    <div>
+                      <BriefcaseBusiness size={17} />
+                      <span>{vehicle.luggage}</span>
+                    </div>
+                  </div>
+
+                  <div className={styles.benefit}>
+                    <ShieldCheck size={15} />
+                    Comfortable travel experience
                   </div>
 
                   <div className={styles.bottom}>
-                    <div>
-                      <small>Starting rental price</small>
+                    <div className={styles.price}>
+                      <small>STARTING FROM</small>
                       <strong>{vehicle.priceLabel}</strong>
                     </div>
 
-                    <span className={styles.arrow}>
-                      <ArrowUpRight size={21} />
+                    <span className={styles.explore}>
+                      View Details <ArrowUpRight size={17} />
                     </span>
                   </div>
                 </div>
@@ -77,6 +110,21 @@ export default function Fleet() {
           })}
         </div>
 
+        <div className={styles.banner}>
+          <div className={styles.bannerIcon}>
+            <Gauge size={26} />
+          </div>
+
+          <div className={styles.bannerText}>
+            <span>NEED A DIFFERENT VEHICLE?</span>
+            <h3>We have the perfect ride for your group.</h3>
+            <p>Contact our team for customized travel arrangements.</p>
+          </div>
+
+          <Link href="/contact">
+            Get a Free Quote <ArrowRight size={17} />
+          </Link>
+        </div>
       </div>
     </section>
   );

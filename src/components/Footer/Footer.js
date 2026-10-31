@@ -1,88 +1,124 @@
-"use client";
 
 import Link from "next/link";
-import { Route, Mail, Building2, ArrowRight, Heart } from "lucide-react";
+import {
+  ArrowRight,
+  MapPin,
+  Phone,
+  Mail,
+  Facebook,
+  Instagram,
+  Linkedin,
+  Twitter,
+  ArrowUpRight,
+} from "lucide-react";
+
 import styles from "./Footer.module.css";
+
+const quickLinks = [
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/#about" },
+  { label: "Services", href: "/services" },
+  { label: "Tour Packages", href: "/packages" },
+  { label: "Our Fleet", href: "/fleet" },
+  { label: "Corporate Travel", href: "/corporate" },
+];
+
+const services = [
+  "Cab & Taxi",
+  "Bus Rental",
+  "Airport Transfers",
+  "Vehicle Rental",
+  "Group Transportation",
+];
 
 export default function Footer() {
   return (
     <footer className={styles.footer}>
-      <div className={`container ${styles.grid}`}>
-        <div className={styles.brandCol}>
-          <Link href="/" className={styles.brand}>
+      <div className={`container ${styles.top}`}>
+        <div className={styles.brand}>
+          <Link href="/" className={styles.logo}>
+            <span className={styles.logoIcon}>T</span>
             <span>
-              <Route size={22} />
+              Travel<span className={styles.logoAccent}>Ease</span>
             </span>
-
-            <b>
-              travel<span>ease</span>
-              <small>YOUR JOURNEY, SIMPLIFIED</small>
-            </b>
           </Link>
 
           <p>
-            Thoughtful travel, practical mobility and simpler journeys — for
-            individuals, families and businesses.
+            Making every journey comfortable, memorable and hassle-free.
+            Discover new destinations and travel with confidence.
           </p>
 
-          <div className={styles.social}>
-            <Link href="/contact">
-              <Mail size={16} />
-            </Link>
-
-            <Link href="/corporate">
-              <Building2 size={16} />
-            </Link>
+          <div className={styles.socials}>
+            <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" aria-label="Facebook">
+              <Facebook size={17} />
+            </a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram">
+              <Instagram size={17} />
+            </a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+              <Linkedin size={17} />
+            </a>
+            <a href="https://www.twitter.com/" target="_blank" rel="noreferrer" aria-label="Twitter">
+              <Twitter size={17} />
+            </a>
           </div>
         </div>
 
-        <div className={styles.links}>
-          <b>Explore</b>
-
-          <Link href="/services">Travel Services</Link>
-          <Link href="/packages">Tour Packages</Link>
-          <Link href="/fleet">Our Fleet</Link>
-          <Link href="/#booking">Find a Ride</Link>
+        <div className={styles.column}>
+          <h3>Quick Links</h3>
+          {quickLinks.map((link) => (
+            <Link href={link.href} key={link.label}>
+              {link.label}
+              <ArrowUpRight size={13} />
+            </Link>
+          ))}
         </div>
 
-        <div className={styles.links}>
-          <b>Corporate</b>
-
-          <Link href="/corporate">Corporate Mobility</Link>
-          <Link href="/contact">Employee Commute</Link>
-          <Link href="/contact">Monthly Contracts</Link>
-          <Link href="/contact">Group Travel</Link>
+        <div className={styles.column}>
+          <h3>Our Services</h3>
+          {services.map((service) => (
+            <Link href="/services" key={service}>
+              {service}
+              <ArrowUpRight size={13} />
+            </Link>
+          ))}
         </div>
 
-        <div className={styles.news}>
-          <b>Travel Notes</b>
+        <div className={styles.column}>
+          <h3>Get In Touch</h3>
 
-          <p>Demo newsletter signup.</p>
+          <div className={styles.contactItem}>
+            <MapPin size={17} />
+            <span>India</span>
+          </div>
 
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              alert("Demo only");
-            }}
-          >
-            <input type="email" placeholder="Your email" required />
-            <button type="submit">
-              <ArrowRight size={16} />
-            </button>
-          </form>
+          <div className={styles.contactItem}>
+            <Phone size={17} />
+            <span>+91 98765 43210</span>
+          </div>
 
-          <small>Frontend demo only.</small>
+          <div className={styles.contactItem}>
+            <Mail size={17} />
+            <span>hello@travelease.example</span>
+          </div>
+
+          <Link href="/contact" className={styles.contactButton}>
+            Contact Us <ArrowRight size={15} />
+          </Link>
         </div>
       </div>
 
       <div className={`container ${styles.bottom}`}>
-        <span>© {new Date().getFullYear()} TravelEase</span>
+        <p>© {new Date().getFullYear()} TravelEase. All rights reserved.</p>
 
-        <span>
-          Built with <Heart size={12} />
-        </span>
+        <div>
+          <Link href="/contact">Privacy Policy</Link>
+          <Link href="/contact">Terms & Conditions</Link>
+        </div>
 
-        <Link href="/">Back to Top ↑</Link>
+        <a href="#" className={styles.backTop}>
+          Back to top ↑
+        </a>
       </div>
     </footer>
   );

@@ -1,26 +1,239 @@
+
 "use client";
+
 import { useState } from "react";
-import { Mail, Phone, ShieldCheck } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  ShieldCheck,
+  ArrowRight,
+  CheckCircle2,
+  Clock3,
+} from "lucide-react";
+
 import styles from "./Contact.module.css";
 
+const initialForm = {
+  name: "",
+  email: "",
+  company: "",
+  need: "Employee pick-up & drop",
+  message: "",
+};
+
 export default function Contact() {
-  const [form,setForm] = useState({name:"",email:"",company:"",need:"Employee pick-up & drop",message:""});
-  const [notice,setNotice] = useState("");
-  function submit(e){
-    e.preventDefault();
-    const old = JSON.parse(localStorage.getItem("travelease-inquiries") || "[]");
-    old.unshift({...form,createdAt:new Date().toLocaleString("en-IN")});
-    localStorage.setItem("travelease-inquiries",JSON.stringify(old));
-    setNotice("Thanks! Your demo inquiry has been saved in this browser.");
-    setForm({name:"",email:"",company:"",need:"Employee pick-up & drop",message:""});
+  const [form, setForm] = useState(initialForm);
+  const [notice, setNotice] = useState("");
+
+  function handleChange(e) {
+    setForm({ ...form, [e.target.name]: e.target.value });
+    setNotice("");
   }
-  return <section className="section" id="contact"><div className={`container ${styles.grid}`}><div className={styles.copy}><div className="section-heading"><span className="eyebrow">LET'S PLAN SOMETHING</span><h2>Big plans or daily rides,<br/><span>we're listening.</span></h2><p>Tell us what you need. From a family holiday to transport for a whole team, let's find the right fit.</p></div>
-    <div className={styles.method}><span><Phone size={19}/></span><div><small>CALL OUR TEAM</small><b>+91 98765 43210</b><p>Demo contact number</p></div></div><div className={styles.method}><span><Mail size={19}/></span><div><small>EMAIL US</small><b>hello@travelease.example</b><p>Demo email address</p></div></div><div className={styles.note}><ShieldCheck size={18}/><p>This frontend demo stores form submissions locally in your browser.</p></div>
-  </div><form className={styles.form} onSubmit={submit}><div className={styles.title}><span className="eyebrow">SEND AN INQUIRY</span><h3>How can we help?</h3><p>Share a few details and we'll organise your request.</p></div>
-    <div className={styles.row}><label className="field-label">Your name *<input required value={form.name} onChange={e=>setForm({...form,name:e.target.value})} placeholder="e.g. Priya Sharma"/></label><label className="field-label">Email address *<input required type="email" value={form.email} onChange={e=>setForm({...form,email:e.target.value})} placeholder="you@example.com"/></label></div>
-    <label className="field-label">Company name<input value={form.company} onChange={e=>setForm({...form,company:e.target.value})} placeholder="Optional"/></label>
-    <label className="field-label">What do you need?<select value={form.need} onChange={e=>setForm({...form,need:e.target.value})}><option>Employee pick-up & drop</option><option>Corporate cab contract</option><option>Airport transfers</option><option>Group transportation</option><option>Tour package</option><option>Personal travel</option><option>Other travel service</option></select></label>
-    <label className="field-label">Tell us a little more<textarea rows="3" value={form.message} onChange={e=>setForm({...form,message:e.target.value})} placeholder="Route, group size, dates..."/></label>
-    <button className="button button-primary" type="submit">Send inquiry <Mail size={16}/></button>{notice&&<p className="form-message" role="status">{notice}</p>}
-  </form></div></section>;
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    try {
+      const old = JSON.parse(
+        localStorage.getItem("travelease-inquiries") || "[]"
+      );
+
+      const inquiry = {
+        ...form,
+        id: Date.now(),
+        createdAt: new Date().toLocaleString("en-IN"),
+      };
+
+      localStorage.setItem(
+        "travelease-inquiries",
+        JSON.stringify([inquiry, ...old])
+      );
+
+      setNotice("success");
+      setForm(initialForm);
+    } catch (error) {
+      setNotice("error");
+    }
+  }
+
+  return (
+    <section className={styles.section} id="contact">
+      <div className={`container ${styles.grid}`}>
+        <div className={styles.copy}>
+          <span className="eyebrow">LET'S PLAN SOMETHING</span>
+
+          <h2>
+            Your next journey
+            <br />
+            <span>starts with a hello.</span>
+          </h2>
+
+          <p className={styles.description}>
+            Whether you are planning a family holiday, booking a cab
+            or arranging corporate transportation, we are here to help.
+            Tell us about your plans.
+          </p>
+
+          <div className={styles.contactCards}>
+            <a href="tel:+919876543210" className={styles.contactCard}>
+              <div className={styles.contactIcon}>
+                <Phone size={20} />
+              </div>
+              <div>
+                <small>CALL OUR TEAM</small>
+                <h3>+91 98765 43210</h3>
+                <p>Demo contact number</p>
+              </div>
+              <ArrowRight size={17} className={styles.arrow} />
+            </a>
+
+            <a
+              href="mailto:hello@travelease.example"
+              className={styles.contactCard}
+            >
+              <div className={styles.contactIcon}>
+                <Mail size={20} />
+              </div>
+              <div>
+                <small>EMAIL US</small>
+                <h3>hello@travelease.example</h3>
+                <p>Demo email address</p>
+              </div>
+              <ArrowRight size={17} className={styles.arrow} />
+            </a>
+
+            <div className={styles.contactCard}>
+              <div className={styles.contactIcon}>
+                <MapPin size={20} />
+              </div>
+              <div>
+                <small>OUR LOCATION</small>
+                <h3>India</h3>
+                <p>Serving travel requirements across India</p>
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.trustNote}>
+            <ShieldCheck size={20} />
+            <div>
+              <b>Your information stays in this browser</b>
+              <p>
+                This is a frontend demo. Inquiry data is saved locally,
+                not sent to a server.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.formCard}>
+          <div className={styles.formHeader}>
+            <div>
+              <span className="eyebrow">SEND AN INQUIRY</span>
+              <h3>Let's talk about your trip.</h3>
+              <p>Fill in the details below to get started.</p>
+            </div>
+
+            <div className={styles.formIcon}>
+              <Mail size={23} />
+            </div>
+          </div>
+
+          <form onSubmit={handleSubmit}>
+            <div className={styles.row}>
+              <label className="field-label">
+                Your name *
+                <input
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  placeholder="Enter your name"
+                  required
+                />
+              </label>
+
+              <label className="field-label">
+                Email address *
+                <input
+                  name="email"
+                  type="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  placeholder="you@example.com"
+                  required
+                />
+              </label>
+            </div>
+
+            <label className="field-label">
+              Company name
+              <input
+                name="company"
+                value={form.company}
+                onChange={handleChange}
+                placeholder="Your company (optional)"
+              />
+            </label>
+
+            <label className="field-label">
+              What do you need?
+              <select
+                name="need"
+                value={form.need}
+                onChange={handleChange}
+              >
+                <option>Employee pick-up & drop</option>
+                <option>Corporate cab contract</option>
+                <option>Airport transfers</option>
+                <option>Group transportation</option>
+                <option>Tour package</option>
+                <option>Personal travel</option>
+                <option>Other travel service</option>
+              </select>
+            </label>
+
+            <label className="field-label">
+              Tell us about your requirements
+              <textarea
+                name="message"
+                rows="4"
+                value={form.message}
+                onChange={handleChange}
+                placeholder="Tell us about your destination, dates, number of travellers..."
+              />
+            </label>
+
+            <button
+              className={`button button-primary ${styles.submitButton}`}
+              type="submit"
+            >
+              Send Inquiry
+              <ArrowRight size={17} />
+            </button>
+
+            {notice === "success" && (
+              <div className={styles.successMessage} role="status">
+                <CheckCircle2 size={19} />
+                <span>
+                  Thank you! Your inquiry has been saved successfully.
+                </span>
+              </div>
+            )}
+
+            {notice === "error" && (
+              <p className={styles.errorMessage} role="alert">
+                Something went wrong while saving. Please try again.
+              </p>
+            )}
+
+            <div className={styles.formFooter}>
+              <Clock3 size={14} />
+              Your details are stored locally in this browser.
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  );
 }

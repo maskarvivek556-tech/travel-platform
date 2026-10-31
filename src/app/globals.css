@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap');
 
 :root {
   --ink: #142b32;
@@ -9,35 +9,37 @@
   --cream: #f7f8f3;
   --line: #e5eae6;
   --navy: #102d35;
-  --page: 1180px;
+  --white: #ffffff;
+  --page: 1200px;
+  --radius: 16px;
+  --shadow: 0 12px 35px rgba(16, 45, 53, 0.09);
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 90px;
+  scroll-padding-top: 100px;
 }
 
 body {
-  margin: 0;
   color: var(--ink);
+  background: #fff;
   font-family: 'DM Sans', sans-serif;
   font-size: 15px;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
-button,
-input,
-select,
-textarea {
+button, input, select, textarea {
   font: inherit;
 }
 
-button,
-a {
+button, a {
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -50,6 +52,11 @@ button {
   cursor: pointer;
 }
 
+img {
+  display: block;
+  max-width: 100%;
+}
+
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,
@@ -59,42 +66,29 @@ textarea:focus-visible {
   outline-offset: 3px;
 }
 
-/* COMMON WEBSITE CONTAINER */
+/* MAIN CONTAINER */
 
 .container {
-  width: calc(100% - 200px);
-  max-width: none;
-  margin-left: auto;
-  margin-right: auto;
+  width: min(100% - 48px, var(--page));
+  margin-inline: auto;
 }
 
-/* SECTION */
+/* COMMON SECTION */
 
 .section {
-  padding: 82px 0;
+  padding: 90px 0;
 }
 
 .section-heading {
-  max-width: 600px;
-}
-
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  color: var(--teal);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 1.6px;
-  margin-bottom: 13px;
+  max-width: 650px;
 }
 
 .section-heading h2 {
   font-family: Manrope, sans-serif;
-  font-size: clamp(32px, 3.7vw, 47px);
-  line-height: 1.17;
-  letter-spacing: -1.8px;
-  margin: 0 0 15px;
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.16;
+  letter-spacing: -1.7px;
+  margin-bottom: 16px;
   font-weight: 800;
 }
 
@@ -104,10 +98,20 @@ textarea:focus-visible {
 
 .section-heading p {
   color: var(--muted);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.9;
-  max-width: 520px;
-  margin: 0;
+  max-width: 550px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--teal);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  margin-bottom: 14px;
 }
 
 .section-top {
@@ -115,7 +119,7 @@ textarea:focus-visible {
   align-items: flex-end;
   justify-content: space-between;
   gap: 25px;
-  margin-bottom: 35px;
+  margin-bottom: 38px;
 }
 
 .text-link {
@@ -123,9 +127,8 @@ textarea:focus-visible {
   align-items: center;
   gap: 9px;
   color: var(--teal);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
-  white-space: nowrap;
 }
 
 /* BUTTONS */
@@ -136,38 +139,40 @@ textarea:focus-visible {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  padding: 13px 19px;
-  border-radius: 7px;
+  padding: 14px 22px;
+  border-radius: 10px;
   font-weight: 700;
-  font-size: 13px;
-  transition: transform 0.2s, background 0.2s;
+  font-size: 14px;
+  transition: 0.25s ease;
 }
 
 .button-primary {
   background: var(--teal);
   color: white;
+  box-shadow: 0 7px 18px rgba(11, 129, 120, 0.18);
 }
 
 .button-primary:hover {
   background: var(--teal-dark);
-  transform: translateY(-1px);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(11, 129, 120, 0.23);
 }
 
 /* CARD GRID */
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
 }
 
-/* FORM FIELDS */
+/* FORMS */
 
 .field-label {
   display: flex;
   flex-direction: column;
-  gap: 7px;
-  font-size: 10px;
+  gap: 8px;
+  font-size: 11px;
   font-weight: 700;
   color: #52696b;
 }
@@ -176,25 +181,25 @@ textarea:focus-visible {
 .field-label select,
 .field-label textarea {
   width: 100%;
-  border: 1px solid #e1e9e3;
-  border-radius: 7px;
-  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 13px;
   background: #fbfcfa;
   color: var(--ink);
-  font-size: 12px;
-  outline: none;
+  font-size: 13px;
 }
 
 .field-label input:focus,
 .field-label select:focus,
 .field-label textarea:focus {
-  border-color: #65bba5;
+  border-color: var(--teal);
+  outline: none;
 }
 
 .form-message {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--teal);
-  margin: 12px 0 0;
+  margin-top: 12px;
 }
 
 .center {
@@ -212,25 +217,13 @@ textarea:focus-visible {
 
 /* TABLET */
 
-@media (max-width: 1100px) {
-  .container {
-    width: calc(100% - 60px);
-  }
-}
-
-@media (max-width: 900px) {
-  .container {
-    width: calc(100% - 42px);
+@media (max-width: 1024px) {
+  .section {
+    padding: 75px 0;
   }
 
   .card-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .section-top {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 15px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -242,29 +235,35 @@ textarea:focus-visible {
   }
 
   .section {
-    padding: 60px 0;
+    padding: 58px 0;
   }
 
   .section-heading h2 {
-    font-size: 34px;
-    letter-spacing: -1.2px;
+    font-size: 32px;
+    letter-spacing: -1px;
   }
 
   .section-heading p {
-    font-size: 12px;
+    font-size: 13px;
+  }
+
+  .section-top {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 26px;
   }
 
   .card-grid {
-    gap: 11px;
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .button {
-    font-size: 12px;
-    padding: 12px 15px;
+    padding: 12px 17px;
+    font-size: 13px;
   }
 }
-
-/* REDUCED MOTION */
 
 @media (prefers-reduced-motion: reduce) {
   *,
