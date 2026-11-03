@@ -110,6 +110,17 @@ export default function Fleet() {
           })}
         </div>
 
+        <div className={styles.fleetIntro}>
+          <span className={styles.fleetIntroLabel}>OUR FLEET</span>
+          <h3>
+            Choose the right ride for your route.
+          </h3>
+          <p>
+            Illustrative vehicle categories for solo travellers, families,
+            teams and groups.
+          </p>
+        </div>
+
         <div className={styles.banner}>
           <div className={styles.bannerIcon}>
             <Gauge size={26} />

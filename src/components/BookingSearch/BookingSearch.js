@@ -24,7 +24,7 @@ import styles from "./BookingSearch.module.css";
 const tabs = [
   { label: "Cab & Taxi", value: "Cab & taxi", icon: CarFront },
   { label: "Bus Rental", value: "Bus rental", icon: Bus },
-  { label: "Flights", icon: Plane },
+  { label: "Flights", value: "Flights", icon: Plane },
   { label: "Railway", value: "Railway", icon: TrainFront },
   { label: "Maharashtra ST", value: "Maharashtra ST", icon: Ticket },
   { label: "Vehicle Rental", value: "Vehicle rental", icon: Luggage },
@@ -79,9 +79,7 @@ export default function BookingSearch() {
             SIMPLE · FAST · CONVENIENT
           </span>
 
-          <h2>
-            Where would you like <span>to go?</span>
-          </h2>
+          <h1>Find Your Perfect Journey</h1>
 
           <p>
             Choose your travel service, enter your journey details
@@ -93,7 +91,6 @@ export default function BookingSearch() {
 
           <div className={styles.cardTop}>
             <div>
-              <h3>Find your perfect journey</h3>
               <p>Select a service to get started</p>
             </div>
 

@@ -26,13 +26,13 @@ export default function Hero() {
             YOUR NEXT ADVENTURE STARTS HERE
           </div>
 
-          <h1>
+          <h2>
             Life is short.
             <br />
             <span>Make it</span>
             <br />
             <span className={styles.colourText}>an adventure.</span>
-          </h1>
+          </h2>
 
           <p className={styles.description}>
             Discover breathtaking destinations, unforgettable road trips

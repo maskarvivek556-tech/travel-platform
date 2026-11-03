@@ -71,11 +71,12 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <nav className={styles.desktopNav}>
             {navLinks.map((link) => {
+              const route = link.href.split("#")[0];
               const active =
-                link.href === "/"
+                route === "/"
                   ? pathname === "/"
-                  : pathname === link.href ||
-                    pathname.startsWith(`${link.href}/`);
+                  : pathname === route ||
+                    pathname.startsWith(`${route}/`);
 
               return (
                 <Link
@@ -90,7 +91,7 @@ export default function Navbar() {
           </nav>
 
           {/* Desktop CTA */}
-          <Link href="/#booking" className={styles.bookButton}>
+          <Link href="/booking" className={styles.bookButton}>
             <span>Book Your Trip</span>
             <span className={styles.buttonIcon}>
               <ArrowUpRight size={17} />
@@ -115,11 +116,12 @@ export default function Navbar() {
             <p className={styles.mobileLabel}>EXPLORE TRAVELEASE</p>
 
             {navLinks.map((link) => {
+              const route = link.href.split("#")[0];
               const active =
-                link.href === "/"
+                route === "/"
                   ? pathname === "/"
-                  : pathname === link.href ||
-                    pathname.startsWith(`${link.href}/`);
+                  : pathname === route ||
+                    pathname.startsWith(`${route}/`);
 
               return (
                 <Link
@@ -135,7 +137,7 @@ export default function Navbar() {
             })}
 
             <Link
-              href="/#booking"
+              href="/booking"
               className={styles.mobileBook}
               onClick={closeMenu}
             >

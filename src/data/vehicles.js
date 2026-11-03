@@ -11,7 +11,7 @@ export const vehicles = [
     priceLabel: "₹12/km",
     icon: CarFront,
     tone: "green",
-    image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1200&q=85",
+    image: "https://imgd.aeplcdn.com/370x208/n/cw/ec/179753/slavia-exterior-right-front-three-quarter-17.jpeg?isig=0&q=80",
     description:
       "Enjoy a comfortable journey with our premium sedan. Ideal for airport transfers, business meetings and family travel.",
     features: ["Air Conditioning", "Comfortable Seats", "Music System", "Professional Driver"],
@@ -26,7 +26,7 @@ export const vehicles = [
     priceLabel: "₹16/km",
     icon: CarFront,
     tone: "blue",
-    image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=1200&q=85",
+    image: "https://imgd.aeplcdn.com/370x208/n/cw/ec/222736/innova-crysta-2026-exterior-right-front-three-quarter.png?isig=0&q=80",
     description:
       "Travel in style with a spacious SUV. A great choice for long-distance journeys and family holidays.",
     features: ["Premium Interior", "Air Conditioning", "Extra Luggage Space", "Professional Driver"],

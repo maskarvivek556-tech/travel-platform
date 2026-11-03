@@ -1,0 +1,335 @@
+.page {
+  min-height: 100vh;
+  padding: 44px 0 84px;
+  background:
+    radial-gradient(ellipse at 92% 6%, rgba(226, 239, 230, 0.6), transparent 30%),
+    #f6f8f5;
+}
+
+.container {
+  width: min(calc(100% - 48px), 1120px);
+  margin-inline: auto;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--teal);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.back:hover {
+  color: var(--teal-dark);
+}
+
+.heading {
+  margin: 30px 0 26px;
+}
+
+.eyebrow {
+  color: var(--teal);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.heading h1 {
+  margin: 8px 0 5px;
+  color: var(--ink);
+  font: 800 clamp(30px, 4vw, 42px) Manrope, sans-serif;
+  letter-spacing: -1.3px;
+}
+
+.heading p,
+.formHeading p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.75fr);
+  align-items: start;
+  gap: 24px;
+}
+
+.formCard,
+.tripCard,
+.confirmation {
+  border: 1px solid #e4ebe6;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 14px 38px rgba(20, 43, 50, 0.055);
+}
+
+.formCard {
+  padding: 30px;
+}
+
+.formHeading {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 24px;
+}
+
+.formIcon,
+.confirmationIcon {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 14px;
+  background: #e8f5ee;
+  color: var(--teal);
+}
+
+.formHeading h2,
+.tripCard h2 {
+  margin: 0 0 3px;
+  color: var(--ink);
+  font: 800 20px Manrope, sans-serif;
+}
+
+.fields {
+  display: grid;
+  gap: 17px;
+}
+
+.fields label {
+  display: grid;
+  min-width: 0;
+  gap: 7px;
+  color: #52696b;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.fields input {
+  width: 100%;
+  min-height: 48px;
+  padding: 11px 13px;
+  border: 1px solid #e1e9e2;
+  border-radius: 10px;
+  outline: none;
+  background: #fbfcfa;
+  color: var(--ink);
+  font-size: 15px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.fields input:focus {
+  border-color: var(--teal);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(17, 121, 104, 0.12);
+}
+
+.fieldRow {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 14px;
+}
+
+.paymentAction {
+  display: grid;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #edf1ed;
+}
+
+.paymentAction > p,
+.paymentAction > small {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.paymentAction > p svg {
+  color: var(--teal);
+}
+
+.paymentAction button {
+  width: 100%;
+  min-height: 50px;
+}
+
+.paymentAction > small {
+  justify-content: center;
+  color: #84928d;
+  text-align: center;
+}
+
+.error {
+  margin: 14px 0 0;
+  color: #a83d3d;
+  font-size: 12px;
+}
+
+.tripCard {
+  position: sticky;
+  top: 110px;
+  padding: 26px;
+}
+
+.tripType {
+  display: inline-flex;
+  margin-bottom: 13px;
+  padding: 7px 10px;
+  border-radius: 30px;
+  background: #e8f5ee;
+  color: var(--teal);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.tripCard h2 {
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.tripDetail {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 43px;
+  border-bottom: 1px solid #edf1ed;
+  color: #52696b;
+  font-size: 12px;
+}
+
+.tripDetail > svg {
+  flex: 0 0 auto;
+  color: var(--teal);
+}
+
+.tripDetail > span {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+}
+
+.fare {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.fare span {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.fare strong {
+  color: var(--teal);
+  font: 800 23px Manrope, sans-serif;
+}
+
+.demoNote {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  margin: 18px 0 0;
+  color: #748785;
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.demoNote svg {
+  flex: 0 0 auto;
+  color: var(--teal);
+}
+
+.confirmation {
+  max-width: 650px;
+  padding: 38px;
+  animation: confirmationIn 0.35s ease both;
+}
+
+.confirmationIcon {
+  margin-bottom: 18px;
+}
+
+.confirmation h2 {
+  margin: 8px 0;
+  color: var(--ink);
+  font: 800 27px Manrope, sans-serif;
+}
+
+.confirmation p {
+  margin: 0 0 22px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+@keyframes confirmationIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 760px) {
+  .page {
+    padding: 28px 0 58px;
+  }
+
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .tripCard {
+    position: static;
+    grid-row: 1;
+  }
+}
+
+@media (max-width: 520px) {
+  .container {
+    width: calc(100% - 30px);
+  }
+
+  .heading {
+    margin: 24px 0 20px;
+  }
+
+  .formCard,
+  .tripCard {
+    padding: 21px 17px;
+    border-radius: 17px;
+  }
+
+  .fieldRow {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .fields input {
+    font-size: 16px;
+  }
+
+  .confirmation {
+    padding: 28px 21px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fields input,
+  .confirmation {
+    transition: none;
+    animation: none;
+  }
+}

@@ -131,12 +131,12 @@ export default function TourPackages() {
         <div className={styles.bottomBanner}>
           <div>
             <span>YOUR JOURNEY, YOUR WAY</span>
-            <h3>Can't find your dream destination?</h3>
-            <p>Tell us what you have in mind. We'll help plan your trip.</p>
+            <h3>Can&apos;t find your dream destination?</h3>
+            <p>Tell us what you have in mind. We&apos;ll help plan your trip.</p>
           </div>
 
           <Link href="/contact">
-            Let's Plan Together <ArrowRight size={17} />
+            Let&apos;s Plan Together <ArrowRight size={17} />
           </Link>
         </div>
       </div>

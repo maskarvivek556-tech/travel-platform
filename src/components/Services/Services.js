@@ -3,16 +3,16 @@ import { ArrowRight, ArrowUpRight, Sparkles } from "lucide-react";
 import { services } from "@/data/services";
 import styles from "./Services.module.css";
 
-const serviceImages = [
-  "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&q=85",
-  "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=85",
-  "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=85",
-  "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=85",
-  "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=800&q=85",
-  "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=800&q=85",
-  "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=800&q=85",
-  "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&q=85",
-];
+const serviceImages = {
+  "Local Taxi": "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&q=85",
+  "Outstation Cabs": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=85",
+  "Airport Transfers": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=85",
+  "Bus & Group Travel": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=85",
+  "Train Tickets": "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=800&q=85",
+  "Maharashtra ST": "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=800&q=85",
+  "Vehicle Rentals": "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=800&q=85",
+  "Tour Packages": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&q=85",
+};
 
 const serviceLinks = [
   "/#booking",
@@ -64,7 +64,7 @@ export default function Services() {
               >
                 <div
                   className={styles.image}
-                  style={{ backgroundImage: `url("${serviceImages[index]}")` }}
+                  style={{ backgroundImage: `url("${serviceImages[item.title]}")` }}
                   role="img"
                   aria-label={item.title}
                 >

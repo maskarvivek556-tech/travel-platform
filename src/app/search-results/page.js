@@ -128,7 +128,10 @@ const demoData = {
       time: "2 hr 45 min",
       seats: "Demo availability",
       image:
-        "https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=1200&q=85",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Jakarta-Bandung_High_Speed_Train.png/960px-Jakarta-Bandung_High_Speed_Train.png",
+      imageCredit: "China News Service",
+      imageCreditUrl:
+        "https://commons.wikimedia.org/wiki/File:Jakarta-Bandung_High_Speed_Train.png",
     },
     {
       name: "Intercity Express",
@@ -323,6 +326,23 @@ export default async function SearchResultsPage({ searchParams }) {
                   <Icon size={13} />
                   {type}
                 </span>
+
+                {item.imageCredit && (
+                  <span className={styles.imageCredit}>
+                    Photo:{" "}
+                    <a href={item.imageCreditUrl} target="_blank" rel="noreferrer">
+                      {item.imageCredit}
+                    </a>
+                    {" · "}
+                    <a
+                      href="https://creativecommons.org/licenses/by/4.0/"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      CC BY 4.0
+                    </a>
+                  </span>
+                )}
               </div>
 
               <div className={styles.info}>
@@ -359,8 +379,19 @@ export default async function SearchResultsPage({ searchParams }) {
                 <h3>{item.price}</h3>
                 <span>Indicative demo price</span>
 
-                <Link href="/#booking" className={styles.selectButton}>
-                  Search Again
+                <Link
+                  href={`/booking?${new URLSearchParams({
+                    type,
+                    trip: item.name,
+                    price: item.price,
+                    from,
+                    to,
+                    date,
+                    people,
+                  }).toString()}`}
+                  className={styles.selectButton}
+                >
+                  Book Now
                   <ArrowRight size={15} />
                 </Link>
               </div>

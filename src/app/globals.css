@@ -2,17 +2,23 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap');
 
 :root {
-  --ink: #142b32;
-  --muted: #748487;
-  --teal: #0b8178;
-  --teal-dark: #076b64;
-  --cream: #f7f8f3;
-  --line: #e5eae6;
-  --navy: #102d35;
+  --ink: #183330;
+  --muted: #6c7d79;
+  --teal: #117968;
+  --teal-dark: #0a5c50;
+  --cream: #f6f8f4;
+  --line: #e4ebe6;
+  --navy: #123a3a;
+  --accent: #c9824e;
   --white: #ffffff;
   --page: 1200px;
-  --radius: 16px;
-  --shadow: 0 12px 35px rgba(16, 45, 53, 0.09);
+  --radius: 18px;
+  --shadow: 0 14px 40px rgba(22, 53, 47, 0.08);
+  --shadow-raised: 0 24px 60px rgba(22, 53, 47, 0.13);
+  --surface: #ffffff;
+  --surface-muted: #f6f8f4;
+  --teal-rgb: 17, 121, 104;
+  --accent-dark: #ad673d;
 }
 
 * {
@@ -24,19 +30,27 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   color: var(--ink);
-  background: #fff;
+  background: var(--surface-muted);
   font-family: 'DM Sans', sans-serif;
   font-size: 15px;
   line-height: 1.6;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 button, input, select, textarea {
   font: inherit;
+}
+
+::selection {
+  color: #fff;
+  background: var(--teal);
 }
 
 button, a {
@@ -140,22 +154,36 @@ textarea:focus-visible {
   align-items: center;
   gap: 10px;
   padding: 14px 22px;
-  border-radius: 10px;
+  border-radius: 12px;
   font-weight: 700;
   font-size: 14px;
-  transition: 0.25s ease;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    background-color 0.22s ease,
+    color 0.22s ease;
 }
 
 .button-primary {
   background: var(--teal);
   color: white;
-  box-shadow: 0 7px 18px rgba(11, 129, 120, 0.18);
+  box-shadow: 0 7px 18px rgba(var(--teal-rgb), 0.18);
 }
 
 .button-primary:hover {
   background: var(--teal-dark);
   transform: translateY(-3px);
-  box-shadow: 0 12px 25px rgba(11, 129, 120, 0.23);
+  box-shadow: 0 12px 25px rgba(var(--teal-rgb), 0.23);
+}
+
+.button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+  transform: none;
 }
 
 /* CARD GRID */
@@ -215,6 +243,36 @@ textarea:focus-visible {
   justify-content: center;
 }
 
+@keyframes sectionReveal {
+  from {
+    opacity: 0.78;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .section {
+    animation: sectionReveal linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 18%;
+  }
+}
+
+@media (max-width: 760px) {
+  .section-heading h2 {
+    font-size: clamp(30px, 8vw, 40px);
+    letter-spacing: -1.1px;
+  }
+
+  .section-heading p {
+    max-width: 100%;
+  }
+}
+
 /* TABLET */
 
 @media (max-width: 1024px) {
@@ -262,6 +320,12 @@ textarea:focus-visible {
   .button {
     padding: 12px 17px;
     font-size: 13px;
+  }
+}
+
+@media (max-width: 380px) {
+  .container {
+    width: calc(100% - 24px);
   }
 }
 

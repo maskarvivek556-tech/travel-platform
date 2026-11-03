@@ -1,6 +1,6 @@
 .section {
-  padding: 90px 0;
-  background: linear-gradient(180deg, #f7faf7, #edf5f0);
+  padding: 64px 0;
+  background: linear-gradient(180deg, #f4f8f5, #eaf3ed);
   overflow: hidden;
 }
 
@@ -8,8 +8,8 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  gap: 25px;
-  margin-bottom: 38px;
+  gap: 20px;
+  margin-bottom: 24px;
 }
 
 .heading {
@@ -19,22 +19,22 @@
 .heading h2 {
   color: #183b34;
   font-family: "Manrope", sans-serif;
-  font-size: clamp(34px, 4vw, 47px);
+  font-size: clamp(30px, 3.5vw, 42px);
   font-weight: 800;
   line-height: 1.16;
   letter-spacing: -1.7px;
-  margin: 15px 0;
+  margin: 9px 0;
 }
 
 .heading h2 span {
-  color: #e98248;
+  color: var(--accent);
 }
 
 .heading p {
   max-width: 540px;
   color: #71817a;
-  font-size: 14px;
-  line-height: 1.8;
+  font-size: 13px;
+  line-height: 1.65;
 }
 
 .customLink {
@@ -49,34 +49,37 @@
 }
 
 .customLink:hover {
-  color: #e98248;
+  color: var(--accent);
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 22px;
+  gap: 16px;
 }
 
 .card {
-  display: block;
+  display: flex;
+  flex-direction: column;
   min-width: 0;
+  height: 100%;
   overflow: hidden;
   background: #fff;
   border: 1px solid #e4ece6;
-  border-radius: 17px;
-  box-shadow: 0 8px 25px rgba(16, 45, 53, 0.05);
+  border-radius: 19px;
+  box-shadow: 0 8px 25px rgba(16, 45, 53, 0.055);
   animation: cardEnter 0.7s ease both;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-5px);
   box-shadow: 0 20px 42px rgba(16, 45, 53, 0.12);
 }
 
 .imageBox {
-  height: 205px;
+  height: 160px;
+  flex: 0 0 160px;
   position: relative;
   overflow: hidden;
   background: #eaf1ed;
@@ -115,11 +118,11 @@
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  padding: 8px 11px;
+  padding: 6px 9px;
   border-radius: 30px;
   background: #ffffffed;
   color: #087b68;
-  font-size: 9px;
+  font-size: 8px;
   font-weight: 800;
 }
 
@@ -137,7 +140,7 @@
   right: 15px;
   bottom: 12px;
   color: #ffffffa8;
-  font-size: 32px;
+  font-size: 27px;
   font-weight: 800;
 }
 
@@ -146,21 +149,24 @@
   z-index: 2;
   bottom: 13px;
   left: 14px;
-  width: 42px;
-  height: 42px;
+  width: 36px;
+  height: 36px;
   display: grid;
   place-items: center;
-  border-radius: 12px;
+  border-radius: 10px;
   background: #ffffffed;
   color: #1d7055;
 }
 
 .content {
-  padding: 20px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 14px;
 }
 
 .category {
-  color: #e98248;
+  color: var(--accent);
   font-size: 9px;
   font-weight: 800;
   letter-spacing: 1.3px;
@@ -168,25 +174,26 @@
 
 .content h3 {
   font-family: "Manrope", sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 800;
-  margin: 9px 0 7px;
+  line-height: 1.3;
+  margin: 5px 0 4px;
   color: #193d35;
 }
 
 .description {
   color: #788b89;
   font-size: 12px;
-  line-height: 1.7;
-  min-height: 42px;
-  margin-bottom: 15px;
+  line-height: 1.5;
+  min-height: 36px;
+  margin-bottom: 9px;
 }
 
 .specs {
   display: flex;
   flex-direction: column;
-  gap: 11px;
-  padding: 15px 0;
+  gap: 7px;
+  padding: 9px 0;
   border-top: 1px solid #edf1ed;
   border-bottom: 1px solid #edf1ed;
 }
@@ -223,8 +230,8 @@
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  padding-top: 17px;
-  margin-top: 14px;
+  padding-top: 10px;
+  margin-top: auto;
   border-top: 1px solid #edf1ed;
 }
 
@@ -238,7 +245,7 @@
 .price strong {
   display: block;
   font-family: "Manrope", sans-serif;
-  font-size: 21px;
+  font-size: 18px;
   font-weight: 800;
   color: #1c654e;
 }
@@ -254,14 +261,45 @@
 }
 
 .card:hover .explore {
-  color: #e98248;
+  color: var(--accent);
+}
+
+.fleetIntro {
+  margin-top: 20px;
+  padding: 14px 18px;
+  border: 1px solid #dfeae2;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.fleetIntroLabel {
+  color: var(--teal);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+}
+
+.fleetIntro h3 {
+  margin-top: 4px;
+  color: #183b34;
+  font-family: Manrope, sans-serif;
+  font-size: clamp(18px, 2.3vw, 24px);
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.fleetIntro p {
+  margin-top: 3px;
+  color: #71817a;
+  font-size: 12px;
+  line-height: 1.6;
 }
 
 .banner {
   display: flex;
   align-items: center;
   gap: 18px;
-  margin-top: 38px;
+  margin-top: 20px;
   padding: 25px 28px;
   border-radius: 16px;
   background: #193e35;
@@ -308,7 +346,7 @@
   gap: 9px;
   padding: 13px 17px;
   border-radius: 8px;
-  background: #f08b51;
+  background: var(--accent);
   color: white;
   font-size: 11px;
   font-weight: 800;
@@ -317,7 +355,7 @@
 }
 
 .banner > a:hover {
-  background: #dc743a;
+  background: #ad673d;
 }
 
 @keyframes cardEnter {
@@ -334,40 +372,63 @@
 @media (max-width: 1100px) {
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
   }
 }
 
 @media (max-width: 650px) {
   .section {
-    padding: 60px 0;
+    padding: 36px 0;
   }
 
   .header {
     align-items: flex-start;
     flex-direction: column;
-    gap: 15px;
-    margin-bottom: 25px;
+    gap: 10px;
+    margin-bottom: 18px;
   }
 
   .heading h2 {
-    font-size: 34px;
+    font-size: 30px;
   }
 
   .heading p {
-    font-size: 13px;
+    font-size: 12px;
   }
 
   .grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
   }
 
   .imageBox {
-    height: 220px;
+    height: 130px;
+    flex-basis: 130px;
   }
 
   .content {
-    padding: 19px;
+    padding: 11px;
+  }
+
+  .content h3 {
+    font-size: 14px;
+  }
+
+  .specs div {
+    font-size: 10px;
+  }
+
+  .benefit {
+    font-size: 9px;
+    line-height: 1.4;
+  }
+
+  .price strong {
+    font-size: 16px;
+  }
+
+  .explore {
+    font-size: 9px;
   }
 
   .description {
@@ -382,6 +443,22 @@
 
   .bannerText h3 {
     font-size: 18px;
+  }
+
+  .fleetIntro {
+    margin-top: 20px;
+    padding: 13px 14px;
+  }
+}
+
+@media (max-width: 440px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .imageBox {
+    height: 150px;
+    flex-basis: 150px;
   }
 }
 

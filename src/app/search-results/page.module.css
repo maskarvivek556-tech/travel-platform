@@ -1,14 +1,15 @@
 
 .page {
   min-height: 100vh;
-  background: #f6f8f5;
-  padding: 35px 0 80px;
+  background:
+    radial-gradient(ellipse at 92% 5%, rgba(226, 239, 230, 0.65), transparent 28%),
+    #f6f8f5;
+  padding: 42px 0 88px;
 }
 
 .container {
-  width: calc(100% - 200px);
-  max-width: 1400px;
-  margin: auto;
+  width: min(calc(100% - 64px), 1280px);
+  margin-inline: auto;
 }
 
 .back {
@@ -53,9 +54,9 @@
 .summary {
   background: white;
   border: 1px solid #e7ece8;
-  border-radius: 14px;
-  padding: 25px;
-  box-shadow: 0 12px 35px #142b320a;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 14px 38px rgba(20, 43, 50, 0.055);
   animation: fadeUp 0.7s ease both;
 }
 
@@ -140,13 +141,14 @@
 }
 
 .resultCard {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(210px, 250px) minmax(0, 1fr) 175px;
   align-items: center;
-  gap: 22px;
+  gap: 24px;
   background: white;
-  padding: 22px;
+  padding: 17px;
   border: 1px solid #e7ece8;
-  border-radius: 13px;
+  border-radius: 18px;
   transition: transform 0.25s, box-shadow 0.25s;
   animation: fadeUp 0.6s ease both;
 }
@@ -172,7 +174,7 @@
   place-items: center;
   color: var(--teal);
   background: #eaf6f2;
-  border-radius: 13px;
+  border-radius: 14px;
 }
 
 .info {
@@ -509,6 +511,25 @@
   box-shadow: 0 3px 12px #00000012;
 }
 
+.imageCredit {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: inline-flex;
+  gap: 3px;
+  padding: 5px 7px;
+  border-radius: 6px;
+  background: rgba(15, 35, 40, 0.76);
+  color: #fff;
+  font-size: 9px;
+  line-height: 1.4;
+}
+
+.imageCredit a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .info {
   min-width: 0;
 }
@@ -670,6 +691,10 @@
     margin-top: 30px;
   }
 
+  .page {
+    padding: 26px 0 56px;
+  }
+
   .heading h1 {
     font-size: 32px;
   }
@@ -705,8 +730,8 @@
   }
 
   .resultCard {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
     align-items: stretch;
     gap: 15px;
     padding: 12px;
@@ -726,6 +751,9 @@
 
   .price {
     width: 100%;
+    min-width: 0;
+    grid-column: 1;
+    margin: 0;
     border-top: 1px solid #edf1ee;
     padding: 14px 4px 3px;
     display: grid;
@@ -756,11 +784,21 @@
   .notice {
     align-items: flex-start;
   }
+
+  .imageCredit {
+    max-width: calc(100% - 16px);
+    font-size: 8px;
+  }
 }
 .resultImage {
   width: 100%;
   height: 220px;
   display: block;
   object-fit: cover;
-  border-radius: 14px;
+  border-radius: 0;
+  transition: transform 0.55s ease;
+}
+
+.resultCard:hover .resultImage {
+  transform: scale(1.045);
 }

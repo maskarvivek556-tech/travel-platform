@@ -8,12 +8,12 @@ import Contact from "@/components/Contact/Contact";
 
 export default function HomePage() {
   return <>
-    <Hero />
     <BookingSearch />
+    <Hero />
     <Services />
     <TourPackages />
-    <Corporate />
     <Fleet />
+    <Corporate />
     <Contact />
   </>;
 }

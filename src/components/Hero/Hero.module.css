@@ -4,7 +4,9 @@
   min-height: 690px;
   overflow: hidden;
   isolation: isolate;
-  background: #fffaf2;
+  background:
+    radial-gradient(ellipse at 75% 15%, rgba(216, 239, 226, 0.68), transparent 38%),
+    linear-gradient(135deg, #fbfcf8 0%, #fffdf8 56%, #f6f9f4 100%);
 }
 
 .backgroundShape {
@@ -14,7 +16,7 @@
   top: -270px;
   right: -180px;
   border-radius: 50%;
-  background: #e8f5eb;
+  background: #e6f3eb;
   z-index: -1;
 }
 
@@ -62,7 +64,7 @@
   background: #f28c45;
 }
 
-.left h1 {
+.left h2 {
   margin-top: 27px;
   color: #17352d;
   font-family: Manrope, sans-serif;
@@ -73,7 +75,7 @@
 }
 
 .colourText {
-  color: #ed8749;
+  color: var(--accent);
   position: relative;
 }
 
@@ -103,7 +105,7 @@
   align-items: center;
   gap: 15px;
   color: white;
-  background: #ed8749;
+  background: linear-gradient(135deg, #c9824e, #b66b3c);
   border-radius: 12px;
   font-size: 13px;
   font-weight: 800;
@@ -112,7 +114,7 @@
 }
 
 .primaryButton:hover {
-  background: #dc7135;
+  background: linear-gradient(135deg, #b66b3c, #9f5833);
   transform: translateY(-4px);
   box-shadow: 0 13px 27px rgba(237, 135, 73, 0.3);
 }
@@ -197,6 +199,11 @@
   background-size: cover;
   background-position: center;
   box-shadow: 0 25px 60px rgba(35, 68, 48, 0.17);
+  transition: transform 0.7s cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+
+.right:hover .imageMain {
+  transform: translateY(-5px) scale(1.015);
 }
 
 .imageMain::after {
@@ -208,13 +215,16 @@
 
 .imageLabel {
   position: absolute;
-  z-index: 1;
-  left: 20px;
-  bottom: 20px;
+  z-index: 3;
+  top: 20px;
+  right: 20px;
+  max-width: calc(100% - 40px);
   display: flex;
   align-items: center;
   gap: 8px;
   padding: 10px 14px;
+  margin-top: 30px;
+  margin-right: 50px;
   border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 30px;
   color: white;
@@ -237,6 +247,11 @@
   background-position: center;
   background-size: cover;
   box-shadow: 0 14px 35px rgba(35, 68, 48, 0.14);
+  transition: transform 0.7s cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+
+.right:hover .imageSmall {
+  transform: translateY(-6px);
 }
 
 .roundBadge {
@@ -292,8 +307,8 @@
   place-items: center;
   width: 42px;
   height: 42px;
-  color: #ed8749;
-  background: #fff0e5;
+  color: var(--accent);
+  background: #f8eee5;
   border-radius: 12px;
 }
 
@@ -391,12 +406,19 @@
     gap: 15px;
   }
 
-  .left h1 {
-    font-size: clamp(46px, 6vw, 60px);
+  .left {
+    min-width: 0;
+  }
+
+  .left h2 {
+    font-size: clamp(42px, 5.2vw, 52px);
+    letter-spacing: -2.6px;
+    overflow-wrap: anywhere;
   }
 
   .right {
     min-height: 450px;
+    min-width: 0;
   }
 
   .imageMain {
@@ -436,10 +458,11 @@
     letter-spacing: 0.8px;
   }
 
-  .left h1 {
-    font-size: clamp(43px, 11vw, 63px);
-    letter-spacing: -2.7px;
+  .left h2 {
+    font-size: clamp(38px, 10.5vw, 58px);
+    letter-spacing: -2px;
     margin-top: 21px;
+    overflow-wrap: anywhere;
   }
 
   .description {
@@ -542,8 +565,9 @@
 }
 
 @media (max-width: 380px) {
-  .left h1 {
-    font-size: 42px;
+  .left h2 {
+    font-size: clamp(34px, 10vw, 38px);
+    letter-spacing: -1.6px;
   }
 
   .right {
@@ -567,7 +591,116 @@
 @media (prefers-reduced-motion: reduce) {
   .left,
   .right,
-  .destinationCard {
+  .destinationCard,
+  .imageMain,
+  .imageSmall {
     animation: none;
+    transition: none;
+  }
+}
+
+/* Keep the hero visible beneath the compact booking bar. */
+.hero {
+  min-height: clamp(420px, calc(100svh - 330px), 570px);
+}
+
+.container {
+  min-height: 0;
+  gap: clamp(15px, 3vw, 36px);
+  padding-top: 16px;
+  padding-bottom: 10px;
+}
+
+.left {
+  padding: 12px 0;
+}
+
+.eyebrow {
+  gap: 7px;
+  padding: 5px 10px 5px 5px;
+}
+
+.eyebrowIcon {
+  width: 22px;
+  height: 22px;
+}
+
+.left h2 {
+  margin-top: 14px;
+  font-size: clamp(38px, 4vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -2.7px;
+}
+
+.description {
+  margin-top: 12px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.buttons {
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.primaryButton {
+  min-height: 45px;
+  padding-inline: 18px;
+}
+
+.bottomInfo {
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.infoIcon {
+  width: 36px;
+  height: 36px;
+}
+
+.right {
+  min-height: clamp(340px, calc(100svh - 430px), 470px);
+}
+
+.imageMain {
+  height: clamp(300px, calc(100svh - 480px), 420px);
+  top: 20px;
+}
+
+.bottom {
+  padding-bottom: 8px;
+}
+
+@media (max-width: 950px) {
+  .right {
+    min-height: 340px;
+  }
+
+  .imageMain {
+    height: 300px;
+  }
+}
+
+@media (max-width: 700px) {
+  .container {
+    padding-top: 20px;
+    padding-bottom: 5px;
+  }
+
+  .left h2 {
+    font-size: clamp(36px, 9vw, 48px);
+    letter-spacing: -2px;
+  }
+
+  .description {
+    margin-top: 12px;
+  }
+
+  .buttons {
+    margin-top: 16px;
+  }
+
+  .bottomInfo {
+    margin-top: 18px;
   }
 }

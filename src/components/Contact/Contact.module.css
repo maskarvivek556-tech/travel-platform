@@ -1,7 +1,9 @@
 
 .section {
-  padding: 95px 0;
-  background: #fff;
+  padding: 64px 0 95px;
+  background:
+    radial-gradient(ellipse at 2% 12%, rgba(223, 240, 229, 0.44), transparent 34%),
+    #fff;
 }
 
 .grid {
@@ -42,7 +44,7 @@
   gap: 14px;
   padding: 17px;
   border: 1px solid #e9eee9;
-  border-radius: 13px;
+  border-radius: 15px;
   text-decoration: none;
   color: var(--ink);
   transition: 0.25s ease;
@@ -122,9 +124,21 @@
 .formCard {
   padding: 32px;
   border: 1px solid #e7eee8;
-  border-radius: 19px;
+  border-radius: 21px;
   background: #fff;
-  box-shadow: 0 20px 60px #173d3210;
+  box-shadow: 0 20px 60px rgba(23, 61, 50, 0.08);
+  animation: contactRise 0.7s 0.1s ease both;
+}
+
+@keyframes contactRise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .formHeader {
@@ -169,6 +183,7 @@
 .formCard textarea {
   width: 100%;
   margin-top: 8px;
+  min-height: 46px;
   padding: 12px 13px;
   border: 1px solid #e1e9e2;
   border-radius: 9px;
@@ -270,7 +285,27 @@
     gap: 0;
   }
 
+  .contactCard {
+    padding: 14px;
+  }
+
+  .contactCard h3 {
+    overflow-wrap: anywhere;
+  }
+
   .formHeader h3 {
     font-size: 21px;
+  }
+
+  .formCard input,
+  .formCard select,
+  .formCard textarea {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .formCard {
+    animation: none;
   }
 }

@@ -376,14 +376,10 @@
 /* ===== PREMIUM NAVBAR COLOR UPDATE ===== */
 
 .header {
-  background: linear-gradient(
-    110deg,
-    #e5faf3 0%,
-    #f5fcf8 48%,
-    #d9f5eb 100%
-  );
-  border-bottom: 1px solid #cce9dd;
-  box-shadow: 0 5px 25px rgba(17, 76, 60, 0.09);
+  background: rgba(255, 255, 255, 0.94);
+  border-bottom: 1px solid rgba(220, 232, 224, 0.85);
+  box-shadow: 0 8px 28px rgba(17, 47, 54, 0.065);
+  backdrop-filter: blur(18px);
 }
 
 .navContainer {
@@ -392,9 +388,15 @@
 
 /* Logo Icon */
 .logoIcon {
-  background: linear-gradient(135deg, #14745e, #0c5145);
+  background: linear-gradient(145deg, #16866f, #105b4f);
   color: #ffffff;
-  box-shadow: 0 7px 18px rgba(16, 105, 82, 0.22);
+  box-shadow: 0 8px 20px rgba(16, 105, 82, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.brand:hover .logoIcon {
+  transform: rotate(0) translateY(-2px);
+  box-shadow: 0 11px 24px rgba(16, 105, 82, 0.25);
 }
 
 /* Navigation Links */
@@ -420,7 +422,7 @@
   padding: 9px 10px 9px 21px;
   gap: 14px;
   border-radius: 50px;
-  background: linear-gradient(135deg, #147b63, #075744);
+  background: linear-gradient(135deg, #16866f, #0a5b4d);
   color: #ffffff;
   font-size: 12px;
   font-weight: 800;
@@ -451,19 +453,28 @@
 /* Mobile Menu */
 @media (max-width: 800px) {
   .mobileMenu {
-    background: #f1fbf6;
-    border-top: 1px solid #cce9dd;
+    background: rgba(255, 255, 255, 0.98);
+    border-top: 1px solid #e3ece6;
+    backdrop-filter: blur(16px);
   }
 
   .mobileBook {
-    background: linear-gradient(135deg, #147b63, #075744);
+    background: linear-gradient(135deg, #16866f, #0a5b4d);
     border-radius: 50px;
     box-shadow: 0 6px 15px rgba(10, 105, 78, 0.18);
   }
 
   .menuButton {
-    background: #e2f6ed;
-    border-color: #c4e6d6;
+    background: #f0f7f3;
+    border-color: #dce9e1;
     color: #08765c;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logoIcon,
+  .bookButton,
+  .buttonIcon {
+    transition: none;
   }
 }

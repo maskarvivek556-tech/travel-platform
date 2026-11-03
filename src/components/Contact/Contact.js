@@ -61,7 +61,7 @@ export default function Contact() {
     <section className={styles.section} id="contact">
       <div className={`container ${styles.grid}`}>
         <div className={styles.copy}>
-          <span className="eyebrow">LET'S PLAN SOMETHING</span>
+          <span className="eyebrow">LET&apos;S PLAN SOMETHING</span>
 
           <h2>
             Your next journey
@@ -131,7 +131,7 @@ export default function Contact() {
           <div className={styles.formHeader}>
             <div>
               <span className="eyebrow">SEND AN INQUIRY</span>
-              <h3>Let's talk about your trip.</h3>
+              <h3>Let&apos;s talk about your trip.</h3>
               <p>Fill in the details below to get started.</p>
             </div>
 

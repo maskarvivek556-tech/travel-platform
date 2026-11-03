@@ -3,8 +3,11 @@
   position: relative;
   overflow: hidden;
   padding: 100px 0;
-  background: #102f36;
+  background:
+    radial-gradient(ellipse at 92% 8%, rgba(32, 121, 102, 0.3), transparent 34%),
+    linear-gradient(135deg, #123a3a 0%, #102f36 62%, #173d3a 100%);
   color: #fff;
+  isolation: isolate;
 }
 
 .grid {
@@ -83,7 +86,9 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: #a5e6ce;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: #b7e5d1;
   color: #123a35;
   font-weight: 700;
   transition: 0.25s ease;
@@ -120,10 +125,16 @@
   inset: 0 0 45px 35px;
   border-radius: 20px;
   overflow: hidden;
+  box-shadow: 0 24px 60px rgba(2, 20, 20, 0.22);
+  transition: transform 0.6s ease;
   background:
     linear-gradient(180deg, #102f3610, #102f3650),
     url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=85")
     center / cover;
+}
+
+.visual:hover .photo {
+  transform: translateY(-4px);
 }
 
 .photoLabel {
@@ -156,7 +167,7 @@
   margin-left: -45px;
   margin-top: 45px;
   padding: 25px;
-  border-radius: 16px;
+  border-radius: 19px;
   background: #fff;
   color: #173b35;
   box-shadow: 0 25px 65px #071d2180;
@@ -260,6 +271,16 @@
   background: #fff;
   color: #173b35;
   box-shadow: 0 12px 35px #061d2145;
+  animation: floatCard 4.5s ease-in-out infinite;
+}
+
+@keyframes floatCard {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
 }
 
 .floatingIcon {
@@ -374,5 +395,13 @@
 
   .floatingCard {
     padding: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo,
+  .floatingCard {
+    animation: none;
+    transition: none;
   }
 }
